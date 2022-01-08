@@ -26,6 +26,12 @@ int main(int argc, char *argv[]) {
   cout << "!N = " << !o << endl;
   cout << "1 / N = " << n.Y() << endl;
   cout << "O // N = " << (o || n) << endl;
+  cout << "1 + N = " << 1 + n << endl;
+  cout << "1 - N = " << 1 - n << endl;
+  cout << "2 * N = " << 2 * n << endl;
+  cout << "2 / N = " << 2 / n << endl;
+  cout << "N + 2 = " << n + 2 << endl;
+  cout << "N - 2 = " << n - 2 << endl;
 
   return 0;
 }

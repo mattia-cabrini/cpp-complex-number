@@ -19,12 +19,21 @@ public:
   complex();
 
   complex operator+(const complex& oth) const;
+  complex operator+(const basic_complex_type& oth) const;
   complex operator-(const complex& oth) const;
+  complex operator-(const basic_complex_type& oth) const;
   complex operator-() const;
   complex operator/(const basic_complex_type& oth) const;
   complex operator/(const complex& oth) const;
   complex operator*(const basic_complex_type& oth) const;
   complex operator*(const complex& oth) const;
+
+  #if __cplusplus > 199711L
+  explicit operator std::string() const;
+  #else
+  operator std::string() const;
+  #endif
+
   basic_complex_type magnitude();
   basic_complex_type phase();
 
@@ -35,6 +44,11 @@ public:
 };
 
 complex operator!(const complex& oth);
+
+complex operator+(const basic_complex_type& i, const complex& oth);
+complex operator-(const basic_complex_type& i, const complex& oth);
+complex operator*(const basic_complex_type& i, const complex& oth);
+complex operator/(const basic_complex_type& i, const complex& oth);
 
 extern std::ostream& operator<<(std::ostream& stream, const complex& N);
 extern std::istream& operator>>(std::istream& stream, complex& N);
