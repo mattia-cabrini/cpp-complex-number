@@ -7,39 +7,39 @@ complex::complex(basic_complex_type re, basic_complex_type im) : re(re), im(im) 
 complex::complex() : re(0), im(0) {}
 
 complex complex::operator+(const complex& oth) const {
-  return complex{this->re + oth.re, this->im + oth.im};
+  return complex(this->re + oth.re, this->im + oth.im);
 }
 
 complex complex::operator-(const complex& oth) const {
-  return complex{this->re - oth.re, this->im - oth.im};
+  return complex(this->re - oth.re, this->im - oth.im);
 }
 
 complex complex::operator-() const {
-  return complex{-this->re, -this->im};
+  return complex(-this->re, -this->im);
 }
 
 complex complex::operator/(const basic_complex_type& oth) const {
-  return complex{this->re / oth, this->im / oth};
+  return complex(this->re / oth, this->im / oth);
 }
 
 complex complex::operator/(const complex& oth) const {
   basic_complex_type mod2 = oth.re * oth.re + oth.im * oth.im;
-  return (*this * !*this) / mod2;
+  return (*this * !oth) / mod2;
 }
 
   complex complex::operator*(const basic_complex_type& oth) const {
-  return complex{this->re * oth, this->im * oth};
+  return complex(this->re * oth, this->im * oth);
 }
 
 complex complex::operator*(const complex& oth) const {
-  complex N{};
+  complex N;
   N.re = this->re * oth.re - this->im * oth.im;
   N.im = this->re * oth.im - this->im * oth.re;
   return N;
 }
 
 complex operator!(const complex& oth) {
-  return complex{oth.re, -oth.im};
+  return complex(oth.re, -oth.im);
 }
 
 basic_complex_type complex::magnitude() {
@@ -62,7 +62,7 @@ complex complex::operator||(const complex& oth) const {
 }
 
 complex complex::Y() const {
-  return complex{1, 0} / *this;
+  return complex(1, 0) / *this;
 }
 
 std::ostream& operator<<(std::ostream& stream, const complex& N) {

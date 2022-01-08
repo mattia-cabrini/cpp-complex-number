@@ -4,7 +4,11 @@
 #include <cmath>
 #include <iostream>
 
+#if __cplusplus > 199711L
 using basic_complex_type = double;
+#else
+typedef double basic_complex_type;
+#endif
 
 class complex {
 public:
